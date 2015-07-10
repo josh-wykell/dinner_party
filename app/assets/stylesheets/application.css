@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+body {
+  font-family: 'Quicksand', sans-serif;
+  padding-top: 10px;
+}
+
+.sign_in {
+  text-align: center;
+  margin-top: 5%
+}
+
+.party_nav {
+  font-family: 'Satisfy', cursive;
+}
+
+#martini {
+  margin-left: 10px;
+}
+
+.welcome {
+  margin-left: 20px;
+}
+
+#dinner_party {
+  font-size: 24pt;
+  font-family: 'Satisfy', cursive;
+}
+
+.party_image {
+  display: inline-block;
+  text-align: right;
+  margin-top: 25px;
+  margin-left: 150px;
+}
+
+#spacer {
+  padding-right: 20px;
+}
