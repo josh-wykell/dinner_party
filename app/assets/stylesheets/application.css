@@ -31,6 +31,11 @@ body {
   margin-left: 10px;
 }
 
+.martini_small{
+  float: left;
+  margin-top: 4px;
+}
+
 .welcome {
   margin-left: 20px;
 }
@@ -38,6 +43,7 @@ body {
 #dinner_party {
   font-size: 24pt;
   font-family: 'Satisfy', cursive;
+  color: #FF0000;
 }
 
 .party_image {
@@ -82,3 +88,12 @@ body {
   border:1px solid white;
 }
 
+.root{
+  display: block;
+  float: left;
+  font-family: 'Satisfy', cursive;
+  font-size: 18pt;
+  margin-left: 5px;
+  margin-top: 8px;
+  color:#FF0000;
+}
