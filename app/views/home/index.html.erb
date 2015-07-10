@@ -1,4 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Dinner Party!</title>
 
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js" %>
+  <![endif]-->
+  <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>  
 <span id="martini"><%= image_tag "martini.jpeg" %></span>
   <span class="welcome">Welcome to <span id="dinner_party">Dinner Party!</span></span>
     <div class="party_image">
@@ -8,4 +28,7 @@
       <%= image_tag "dinner_party.jpeg" %>
     </div>
   <div class="container">
-  <div class="sign_in"><h1><%= link_to 'Sign in with Spotify', '/auth/spotify' %></h1></div>
+    <div class="sign_in"><h1><%= link_to 'Sign in with Spotify', '/auth/spotify' %></h1></div>
+  </div>
+</body>
+</html>
