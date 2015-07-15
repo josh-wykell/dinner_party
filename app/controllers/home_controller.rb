@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-    render layout: false
+    unless current_user
+      render layout: false
+    else
+      redirect_to playlists_path
+    end
   end
 end

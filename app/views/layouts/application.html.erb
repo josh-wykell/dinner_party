@@ -22,21 +22,32 @@
   <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
+
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
         <span class="martini_small">
           <%= image_tag "martini_small.jpeg" %>
         </span>
         <%= link_to "Dinner Party!", "/", class: "root" %>
       </div>
+
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-right">
           <button type="submit" class="btn btn-default"><%= link_to "Sign out", signout_path%> </button>
         </form>
+
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search Spotify">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
         <p class="navbar-text navbar-right">
           <% unless current_user.avatar_url.blank? %>
             <%= image_tag current_user.avatar_url, size: '25x25' %>
@@ -47,16 +58,28 @@
       </div>
     </div>
   </nav> 
+  <div class="container">
   <% flash.each do |name, msg| %>
     <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <%= msg %>
     <% end %>
   <% end %>
+
   <%= yield %>
-  <div class="footer">
     
-  </div>
+  </div>  
+  <footer class="footer hidden-sm hidden-xs">
+    <div class="container">
+      <div class="player">
+        <iframe src="https://embed.spotify.com/?uri=spotify:track:5JunxkcjfCYcY7xJ29tLai" frameborder="0" allowtransparency="true" width="250px" height="80px"></iframe>
+      </div>
+      <div class="footer_right">
+        <em>created by</em><span class="my_name"> Josh Wyell</span> @The Iron Yard
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
+

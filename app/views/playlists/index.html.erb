@@ -1,0 +1,50 @@
+<div class="centered_jumbotron">
+  <div class="jumbotron">
+    <h2 class="jumbotron_title"><%=current_user.display_name %>'s Playlists:</h2>
+    <% @playlists.each do |playlist| %>
+    <ul>
+      <li>
+        <%= link_to "#{playlist.name}", playlist_path(playlist.id) %>
+      </li>
+    </ul> 
+    <% end %>
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+  New Playlist
+</button>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for(@playlist, html: { class: "form-horizontal" }) do |form| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">New Playlist</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="playlist_name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="playlist[name]" id="Name" placeholder="what would you like to name your new playlist?">
+            </div>
+          </div>
+
+          <div class="form-group">  
+            <label for="playlist_contributers" class="col-sm-2 control-label">Contributers</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="playlist[contributers]" id="playlist_contributers" placeholder="seperated by commas">
+            </div>
+          </div>
+     
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default">Create List</button>     
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

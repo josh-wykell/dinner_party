@@ -19,16 +19,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>  
+<div class="landing_page">
 <span id="martini"><%= image_tag "martini.jpeg" %></span>
   <span class="welcome">Welcome to <span id="dinner_party">Dinner Party!</span></span>
     <div class="party_image">
-      <%= image_tag "trombone_player", class: "img-responsive" %>
-      <%= image_tag "guitar_player.png", class: "img-responsive" %>
+      <%= image_tag "trombone_player" %>
+      <%= image_tag "guitar_player.png" %>
       <span id="spacer"></span>
-      <%= image_tag "dinner_party.jpeg", class: "img-responsive" %>
+      <%= image_tag "dinner_party.jpeg" %>
     </div>
   <div class="container">
     <div class="sign_in"><h1><%= link_to 'Sign in with Spotify', '/auth/spotify' %></h1></div>
   </div>
+</div>
 </body>
 </html>

@@ -11,18 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709210958) do
+ActiveRecord::Schema.define(version: 20150715164121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "playlists", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.string   "title"
+    t.json     "contributers"
+  end
+
+  add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "uri"
+    t.string   "album"
     t.string   "contributer"
-    t.string   "track"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "playlist_id"
   end
+
+  add_index "tracks", ["playlist_id"], name: "index_tracks_on_playlist_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -34,4 +48,6 @@ ActiveRecord::Schema.define(version: 20150709210958) do
     t.json     "data",       default: {}
   end
 
+  add_foreign_key "playlists", "users"
+  add_foreign_key "tracks", "playlists"
 end

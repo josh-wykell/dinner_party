@@ -11,6 +11,7 @@
 # @attr [String] product         The user's Spotify subscription level: "premium", "free", etc. This field is only available when the current user has granted access to the *user-read-private* scope.
 # @attr [Hash]   tracks_added_at A hash containing the date and time each track was saved by the user. Note: the hash is filled and updated only when {#saved_tracks} is used.
 class User < ActiveRecord::Base
+  has_many :playlists
   
   def display_name
     name.blank? ? uid : name
