@@ -7,8 +7,9 @@ class Playlist < ActiveRecord::Base
   end
 
   def list_contributers
-    self.contributers.try(:join,", ")
+    self.contributers.try(:join, ", ")
   end
+  
   # # TODO: add spotify_id:string to playlists
   # def spotify
   #   @spotify ||= RSpotify::Playlist.find(user.uid, spotify_id)

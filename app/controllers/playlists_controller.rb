@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
   require 'rspotify'
 
   def index
-    @playlists = current_user.spotify.playlists
+    @playlists = current_user.playlists 
     @playlist = Playlist.new
   end
 
@@ -12,7 +12,11 @@ class PlaylistsController < ApplicationController
   
   def create
     @playlists = Playlist.all
-    @playlist = Playlist.create(playlist_params)
+    # contributers = playlist_params[:contributers].split(',')
+    # playlist_params[:contributers] = contributers
+    @playlist = current_user.playlists.create(playlist_params)
+
+    redirect_to '/pages/playing'
   end
 
   def edit
@@ -34,6 +38,6 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:title, :user_id)
+    params.require(:playlist).permit(:name, :list_contributers)
   end
 end

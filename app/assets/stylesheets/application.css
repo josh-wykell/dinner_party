@@ -21,7 +21,7 @@ html {
 body {
   font-family: 'Quicksand', sans-serif;
   margin-top: 30px;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
   padding-bottom: none;
 }
 
@@ -185,15 +185,12 @@ ol li {
   margin-bottom: 3px;
 }
 
-.currently_playing { 
-  display:    block;
-  float: left;
-  margin-left: 20px;
+.currently_playing, .add_to_playlist { 
+  padding: 10px;
+  background-color: #b7fb83;
 }
 
-.add_to_playlist {
-  display: inline-block;
-  float: right;
-  margin-right: 200px;
+.playlist_show {
+  margin-top: 10px;
 }
 

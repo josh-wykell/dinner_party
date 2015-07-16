@@ -15,3 +15,22 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+
+$(document).ready(function() {
+
+  $('#spotify_search').on('input', function() {
+    var query = event.target.value;
+
+    if (query) {
+      $.ajax( "/spotify/search?q=" + encodeURIComponent(query)).done(function(data) {
+          $("#spotify_search_results").html(data);
+        }).fail(function() {
+          alert( "error" );
+        })
+        // .always(function() {
+        //   alert( "complete" );
+        // });
+    };
+  });
+});

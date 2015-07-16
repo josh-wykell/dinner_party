@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20150715164121) do
   enable_extension "plpgsql"
 
   create_table "playlists", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
-    t.string   "title"
-    t.json     "contributers"
+    t.string   "name"
+    t.text     "contributers", default: [],              array: true
   end
 
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree

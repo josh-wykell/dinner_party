@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "/auth/spotify/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
-
+  get "/spotify/search" => "home#spotify_search"
   resources :playlists
   
   root 'home#index'
