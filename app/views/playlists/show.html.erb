@@ -1,9 +1,31 @@
-<h2>Fun Playlist Title</h2>
-<ol>
-  <li>
-    Dude Looks Like A Lady
-  </li>
-  <li>
-    Funcky Chicken
-  </li>
-</ol>
+<div class="playlist_show">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="currently_playing">
+        <h3><%= @playlist.name %></h3>
+        <ol>
+          <% @playlist.tracks.each do |track| %>
+          <li>
+            <%= track.name %>
+            <em>by</em>
+            <%= track.artists %>
+          </li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+  <div class="col-md-8">
+    <div class="add_to_playlist">
+      <h1>It's <span class="my_name"><%= @playlist.current_contributer %>'s</span> turn to pick a song!</h1>
+      <div class="form-group">
+        <input id="spotify_search" type="text" class="form-control" placeholder="Search Spotify" data-search-uri="<%= search_playlist_tracks_url(@playlist) %>" >
+      </div>
+      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+    </div>
+    <div id="spotify_search_results">
+    
+    </div>
+  </div>
+</div>    
+<!-- </div>
+</div> -->

@@ -194,3 +194,7 @@ ol li {
   margin-top: 10px;
 }
 
+#search_items {
+  font-family: 'Satisfy', cursive;
+  color: #FF0000;
+}

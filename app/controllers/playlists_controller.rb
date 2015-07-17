@@ -12,11 +12,9 @@ class PlaylistsController < ApplicationController
   
   def create
     @playlists = Playlist.all
-    # contributers = playlist_params[:contributers].split(',')
-    # playlist_params[:contributers] = contributers
     @playlist = current_user.playlists.create(playlist_params)
 
-    redirect_to '/pages/playing'
+    redirect_to playlist_path
   end
 
   def edit
@@ -30,7 +28,7 @@ class PlaylistsController < ApplicationController
     @playlists = Playlist.all
     @playlist.destroy
   end
-
+  
   private
 
   def set_playlist

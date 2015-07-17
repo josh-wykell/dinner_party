@@ -1,0 +1,29 @@
+<h4 >Search results for "<%= @query %>"</h4>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><span id="search_items">Song</span></th>
+        <th><span id="search_items">Artist</span></th>
+        <th><span id="search_items">Album</span></th>
+      </tr>
+    </thead> 
+    <tbody>
+      <% @tracks.each do |track| %>
+      <tr>
+        <td><%= track.name %></td>
+        <td><%= artist_for_track(track) %></td>
+        <td><%= track.album.name %></td>
+        <td><%= form_for(Track.new, :url => playlist_tracks_path(@playlist)) do |f| %>
+              <%= f.hidden_field :name, :value => track.name %>
+              <%= f.hidden_field :artists, :value => artist_for_track(track) %>
+              <%= f.hidden_field :album, :value => track.album  %>
+              <%= f.hidden_field :uri, :value => track.uri  %>
+              <%= f.submit class: "btn btn-default" %>
+            <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody> 
+  </table>
+</div> 

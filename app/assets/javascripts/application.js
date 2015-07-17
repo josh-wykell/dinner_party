@@ -23,7 +23,7 @@ $(document).ready(function() {
     var query = event.target.value;
 
     if (query) {
-      $.ajax( "/spotify/search?q=" + encodeURIComponent(query)).done(function(data) {
+      $.ajax($(this).data('search-uri') + "?q=" + encodeURIComponent(query)).done(function(data) {
           $("#spotify_search_results").html(data);
         }).fail(function() {
           alert( "error" );

@@ -9,6 +9,11 @@ class Playlist < ActiveRecord::Base
   def list_contributers
     self.contributers.try(:join, ", ")
   end
+
+  def current_contributer
+    self.contributers.fetch( tracks.size % contributers.size )
+  end
+
   
   # # TODO: add spotify_id:string to playlists
   # def spotify
