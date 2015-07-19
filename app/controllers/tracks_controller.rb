@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :set_playlist
+  before_action :set_playlist 
   require 'rspotify'
 
   
@@ -25,6 +25,6 @@ class TracksController < ApplicationController
   end
 
   def track_params
-    params.require(:track).permit(:name, :album, :artists, :uri,)
+    params.require(:track).permit(:name, :album, :artists, :uri, :contributer)
   end
 end

@@ -14,7 +14,11 @@ class PlaylistsController < ApplicationController
     @playlists = Playlist.all
     @playlist = current_user.playlists.create(playlist_params)
 
-    redirect_to playlist_path
+    if @playlist.save
+      redirect_to @playlist
+    else
+      render :new
+    end
   end
 
   def edit

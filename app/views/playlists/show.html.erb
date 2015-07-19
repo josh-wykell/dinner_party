@@ -2,13 +2,14 @@
   <div class="row">
     <div class="col-md-4">
       <div class="currently_playing">
-        <h3><%= @playlist.name %></h3>
+        <h3><%= @playlist.name.titleize %></h3>
         <ol>
           <% @playlist.tracks.each do |track| %>
           <li>
-            <%= track.name %>
+            <h5><b><%= track.name %></b></h5>
             <em>by</em>
-            <%= track.artists %>
+            <b><%= track.artists %></b>
+            <span id="track_contributer"><em>added by</em> <%= track.contributer %></span>
           </li>
           <% end %>
         </ol>
@@ -16,7 +17,8 @@
     </div>
   <div class="col-md-8">
     <div class="add_to_playlist">
-      <h1>It's <span class="my_name"><%= @playlist.current_contributer %>'s</span> turn to pick a song!</h1>
+      <p>contributers: <%= @playlist.contributers.join( ", ").titleize %></p>
+      <h1>It's <span class="my_name"><%= @playlist.current_contributer.titleize %>'s</span> turn to pick a song!</h1>
       <div class="form-group">
         <input id="spotify_search" type="text" class="form-control" placeholder="Search Spotify" data-search-uri="<%= search_playlist_tracks_url(@playlist) %>" >
       </div>

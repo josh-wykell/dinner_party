@@ -157,7 +157,8 @@ body {
   margin-top: 20px;
   max-height: 500px;
   overflow: auto;
-  background-color: #b7fb83;
+  background: linear-gradient(45deg, #b7fb83, #CAFB78);
+
 }
 
 .jumbotron_title {
@@ -173,7 +174,6 @@ body {
 .jumbotron ul li {
   display: inline-block;
   padding: 3px 7px;
-  /*border-right: 1px solid black;*/
   font-size: 24pt;
 }
 
@@ -182,12 +182,17 @@ ul li:last-child {
 }
 
 ol li {
-  margin-bottom: 3px;
+  border-bottom: solid 1px;
+}
+
+ol li:last-child {
+  border: none;
 }
 
 .currently_playing, .add_to_playlist { 
   padding: 10px;
-  background-color: #b7fb83;
+  background: linear-gradient(90deg, #b7fb83, #CAFB78);
+  border-radius: 5px;
 }
 
 .playlist_show {
@@ -197,4 +202,8 @@ ol li {
 #search_items {
   font-family: 'Satisfy', cursive;
   color: #FF0000;
+}
+
+#track_contributer {
+  font-size: 10pt;
 }
