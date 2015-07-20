@@ -15,7 +15,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'rspotify'
-gem 'high_voltage', '~> 2.3.0'  
+gem 'high_voltage', '~> 2.3.0'
+gem "acts_as_follower"  
 
 group :development, :test do
   gem 'better_errors'

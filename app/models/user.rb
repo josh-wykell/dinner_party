@@ -12,7 +12,8 @@
 # @attr [Hash]   tracks_added_at A hash containing the date and time each track was saved by the user. Note: the hash is filled and updated only when {#saved_tracks} is used.
 class User < ActiveRecord::Base
   has_many :playlists
-  
+    acts_as_follower
+
   def display_name
     name.blank? ? uid : name
   end

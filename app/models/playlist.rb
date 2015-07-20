@@ -1,6 +1,7 @@
 class Playlist < ActiveRecord::Base
   belongs_to :user
   has_many :tracks
+  acts_as_followable
 
   def list_contributers=(names)
     self.contributers = names.split(",")
@@ -14,6 +15,9 @@ class Playlist < ActiveRecord::Base
     self.contributers.fetch( tracks.size % contributers.size )
   end
 
+  def self.search(query)
+    where("name ilike ?", "%#{query}%") 
+  end
   
   # # TODO: add spotify_id:string to playlists
   # def spotify

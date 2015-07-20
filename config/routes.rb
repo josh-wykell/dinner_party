@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy", :as => :signout
   get "/spotify/search" => "home#spotify_search"
   resources :playlists do 
+    member do
+      get :follow
+      get :unfollow
+    end
     resources :tracks, only: [:create] do
       collection do
         get 'search'

@@ -3,16 +3,31 @@
     <div class="col-md-4">
       <div class="currently_playing">
         <h3><%= @playlist.name.titleize %></h3>
-        <ol>
-          <% @playlist.tracks.each do |track| %>
-          <li>
-            <h5><b><%= track.name %></b></h5>
-            <em>by</em>
-            <b><%= track.artists %></b>
-            <span id="track_contributer"><em>added by</em> <%= track.contributer %></span>
-          </li>
-          <% end %>
-        </ol>
+        <table class="table-hover">
+          <thead>
+            <tr>
+              <th>Song</th>
+              <th>Artist</th>
+              <th>Added By</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @playlist.tracks.each do |track| %>
+            <tr>
+              <td><%= truncate track.name, length: 25, separator: ' ' %></td>
+              <td><%= track.artists %></td>
+              <td><%= track.contributer %></td>
+            <% if @playlist.user == current_user %>
+              <td>
+                <%= link_to track, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <% end %>
+              </td>
+            <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   <div class="col-md-8">

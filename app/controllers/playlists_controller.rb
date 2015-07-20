@@ -3,7 +3,11 @@ class PlaylistsController < ApplicationController
   require 'rspotify'
 
   def index
-    @playlists = current_user.playlists 
+    if params[:search]
+      @playlists = Playlist.search(params[:search]).order("created_at DESC")
+    else
+      @playlists = current_user.playlists
+    end 
     @playlist = Playlist.new
   end
 
@@ -31,6 +35,18 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlists = Playlist.all
     @playlist.destroy
+  end
+
+    def follow
+    @playlist = Playlist.find(params[:id])
+    current_user.follow(@playlist)
+    redirect_to root_path flash[:notice] = "You are now following #{@playlist.name}."
+  end
+
+  def unfollow
+    @playlist = Playlist.find(params[:id])  
+    current_user.stop_following(@playlist)
+    redirect_to root_path flash[:notice] = "You are no longer following #{@playlist.name}."
   end
   
   private

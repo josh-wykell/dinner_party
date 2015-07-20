@@ -148,10 +148,6 @@ body {
   font-family: 'Satisfy', cursive;
 }
 
-.centered_jumbotron {
-  text-align: center;
-}
-
 .jumbotron{
   text-align: center;
   margin-top: 20px;
@@ -162,9 +158,9 @@ body {
 }
 
 .jumbotron_title {
-  text-align: left;
   font-weight: bold;
   font-family: 'Satisfy', cursive;
+  text-align: center;
 }
 
 .jumbotron ul, {
@@ -173,8 +169,27 @@ body {
 
 .jumbotron ul li {
   display: inline-block;
-  padding: 3px 7px;
   font-size: 24pt;
+}
+
+.user_lists_l {
+  float: left;
+}
+
+.user_lists_r {
+  float: right;
+}
+
+.user_lists_l td {
+font-size: 18pt;
+}
+
+.user_lists_r td {
+  font-size: 18pt;
+}
+
+.user_lists_r th {
+
 }
 
 ul li:last-child { 
@@ -193,6 +208,11 @@ ol li:last-child {
   padding: 10px;
   background: linear-gradient(90deg, #b7fb83, #CAFB78);
   border-radius: 5px;
+  overflow: auto;
+}
+
+.currently_playing h3 {
+  text-align: center;
 }
 
 .playlist_show {
@@ -207,3 +227,4 @@ ol li:last-child {
 #track_contributer {
   font-size: 10pt;
 }
+

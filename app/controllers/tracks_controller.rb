@@ -18,6 +18,11 @@ class TracksController < ApplicationController
     redirect_to playlist_path(@playlist) 
   end
 
+  def delete
+    @playlist.track.destroy
+    redirect_to playlist_path(@playlist)
+  end
+
   private
 
   def set_playlist
