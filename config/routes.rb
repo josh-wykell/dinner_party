@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get :follow
       get :unfollow
     end
-    resources :tracks, only: [:create] do
+    resources :tracks, only: [:create, :destroy] do
       collection do
         get 'search'
       end

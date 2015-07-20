@@ -1,6 +1,6 @@
 <div class="playlist_show">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div class="currently_playing">
         <h3><%= @playlist.name.titleize %></h3>
         <table class="table-hover">
@@ -11,6 +11,17 @@
               <th>Added By</th>
             </tr>
           </thead>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <%= link_to playlist_path(@playlist), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  Delete This Playlist
+                  <% end %>
+              </td>
+            </tr>
+          </tfoot>
           <tbody>
             <% @playlist.tracks.each do |track| %>
             <tr>
@@ -19,7 +30,7 @@
               <td><%= track.contributer %></td>
             <% if @playlist.user == current_user %>
               <td>
-                <%= link_to track, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= link_to playlist_track_path(@playlist, track), method: :delete, data: { confirm: 'Are you sure?' } do %>
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 <% end %>
               </td>
@@ -30,7 +41,7 @@
         </table>
       </div>
     </div>
-  <div class="col-md-8">
+  <div class="col-md-7">
     <div class="add_to_playlist">
       <p>contributers: <%= @playlist.contributers.join( ", ").titleize %></p>
       <h1>It's <span class="my_name"><%= @playlist.current_contributer.titleize %>'s</span> turn to pick a song!</h1>

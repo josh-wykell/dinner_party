@@ -33,11 +33,11 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-    @playlists = Playlist.all
     @playlist.destroy
+    redirect_to root_path
   end
 
-    def follow
+  def follow
     @playlist = Playlist.find(params[:id])
     current_user.follow(@playlist)
     redirect_to root_path flash[:notice] = "You are now following #{@playlist.name}."

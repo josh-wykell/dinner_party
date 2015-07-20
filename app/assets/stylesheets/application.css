@@ -228,3 +228,14 @@ ol li:last-child {
   font-size: 10pt;
 }
 
+.currently_playing td {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.currently_playing tfoot td {
+  padding-top: 3px;
+  font-size: 8pt;
+  text-align: right;
+  vertical-align: bottom;
+}

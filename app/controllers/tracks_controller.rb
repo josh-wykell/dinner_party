@@ -18,8 +18,9 @@ class TracksController < ApplicationController
     redirect_to playlist_path(@playlist) 
   end
 
-  def delete
-    @playlist.track.destroy
+  def destroy
+    @track = @playlist.tracks.find(params[:id])
+    @track.destroy
     redirect_to playlist_path(@playlist)
   end
 
