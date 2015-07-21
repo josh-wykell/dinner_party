@@ -1,4 +1,19 @@
 <div class="playlist_show">
+  
+  <div class="col-md-7">
+    <div class="add_to_playlist">
+      <p>contributers: <%= @playlist.contributers.join( ", ").titleize %></p>
+      <h1>It's <span class="my_name"><%= @playlist.current_contributer.titleize %>'s</span> turn to pick a song!</h1>
+      <div class="form-group">
+        <input id="spotify_search" type="text" class="form-control" placeholder="Search Spotify" data-search-uri="<%= search_playlist_tracks_url(@playlist) %>" >
+      </div>
+      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+    </div>
+    <div id="spotify_search_results">
+    
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-5">
       <div class="currently_playing">
@@ -41,20 +56,10 @@
         </table>
       </div>
     </div>
-  <div class="col-md-7">
-    <div class="add_to_playlist">
-      <p>contributers: <%= @playlist.contributers.join( ", ").titleize %></p>
-      <h1>It's <span class="my_name"><%= @playlist.current_contributer.titleize %>'s</span> turn to pick a song!</h1>
-      <div class="form-group">
-        <input id="spotify_search" type="text" class="form-control" placeholder="Search Spotify" data-search-uri="<%= search_playlist_tracks_url(@playlist) %>" >
-      </div>
-      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+  
+  <div class="row">
+    <div class="col-md-7 player"> 
+      <iframe src="<%= @playlist.embed_url %>" frameborder="0" allowtransparency="true" width=300 height=380></iframe>
     </div>
-    <div id="spotify_search_results">
-    
-    </div>
-  </div>
-  <iframe src="<%= @playlist.embed_url %>" frameborder="0" allowtransparency="true" width=300 height=380></iframe>
+  </div>  
 </div>    
-<!-- </div>
-</div> -->
