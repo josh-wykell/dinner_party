@@ -1,7 +1,13 @@
 class Playlist < ActiveRecord::Base
   belongs_to :user
   has_many :tracks, :dependent => :destroy
+  before_create :create_spotify_playlist
   acts_as_followable
+
+  def create_spotify_playlist
+    playlist = user.spotify.create_playlist!(name)
+    self.uri = playlist.uri
+  end
 
   def list_contributers=(names)
     self.contributers = names.split(",")
@@ -19,8 +25,11 @@ class Playlist < ActiveRecord::Base
     where("name ilike ?", "%#{query}%") 
   end
   
-  # # TODO: add spotify_id:string to playlists
-  # def spotify
-  #   @spotify ||= RSpotify::Playlist.find(user.uid, spotify_id)
-  # end
+  def spotify_id
+    uri.split(':').last
+  end
+
+  def spotify
+    @spotify ||= RSpotify::Playlist.find(user.spotify.id, spotify_id)
+  end
 end
