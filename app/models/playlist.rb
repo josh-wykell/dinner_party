@@ -32,4 +32,9 @@ class Playlist < ActiveRecord::Base
   def spotify
     @spotify ||= RSpotify::Playlist.find(user.spotify.id, spotify_id)
   end
+
+  def embed_url
+    track_ids = tracks.map(&:spotify_id).join(',')
+    "https://embed.spotify.com/?uri=spotify:trackset:#{URI.escape(name)}:#{track_ids}&theme=white&view=list"
+  end
 end
