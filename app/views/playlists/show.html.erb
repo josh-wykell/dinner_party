@@ -2,8 +2,8 @@
   
   <div class="col-md-7">
     <div class="add_to_playlist">
-      <p>contributers: <%= @playlist.contributers.join( ", ").titleize %></p>
-      <h1>It's <span class="my_name"><%= @playlist.current_contributer.titleize %>'s</span> turn to pick a song!</h1>
+      <p>contributors: <%= @playlist.contributers.join( ", ").titleize %></p>
+      <h2>It's <span class="turn"><%= @playlist.current_contributer.titleize %>'s</span> turn!</h2><br><h4><em>to pick a song</em></h4>
       <div class="form-group">
         <input id="spotify_search" type="text" class="form-control" placeholder="Search Spotify" data-search-uri="<%= search_playlist_tracks_url(@playlist) %>" >
       </div>
@@ -56,10 +56,10 @@
         </table>
       </div>
     </div>
+  </div>
   
-  <div class="row">
-    <div class="col-md-7 player"> 
+    <div class="col-md-4 player"> 
       <iframe src="<%= @playlist.embed_url %>" frameborder="0" allowtransparency="true" width=300 height=380></iframe>
     </div>
-  </div>  
+                    
 </div>    

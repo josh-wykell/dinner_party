@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
-  before_action :set_playlist 
+  before_filter :authenticate_user!
+  before_action :set_playlist
   require 'rspotify'
 
   

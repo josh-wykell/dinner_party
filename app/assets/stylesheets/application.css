@@ -36,8 +36,9 @@ body {
 
 .player {
   display: inline-block;
-  float: left;
-  margin-left: 30px;
+  float: right;
+  margin-left: 100px;
+  margin-top: 20px;
 }
 
 .party_nav {
@@ -146,6 +147,12 @@ body {
 
 .my_name {
   font-family: 'Satisfy', cursive;
+} 
+
+.turn {
+  font-family: 'Satisfy', cursive;
+  font-size: 52px;
+  color: #FF0000;
 }
 
 .jumbotron{
@@ -243,3 +250,12 @@ ol li:last-child {
 .drummer {
   float: right;
 }
+
+.add_to_playlist h2 {
+  margin-bottom: -16px;
+}
+
+.add_to_playlist h4 {
+  margin-top: 0px;
+}
+

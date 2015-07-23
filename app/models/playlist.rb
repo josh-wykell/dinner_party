@@ -3,6 +3,7 @@ class Playlist < ActiveRecord::Base
   has_many :tracks, :dependent => :destroy
   before_create :create_spotify_playlist
   acts_as_followable
+  validates_presence_of :name, :contributers
 
   def create_spotify_playlist
     playlist = user.spotify.create_playlist!(name)

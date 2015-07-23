@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
   require 'rspotify'
 
@@ -21,7 +22,7 @@ class PlaylistsController < ApplicationController
     if @playlist.save
       redirect_to @playlist
     else
-      render :new
+      redirect_to root_path, :notice => "We were unable to create your playlist. Please make sure to include a name for your list, and at least one contributor."
     end
   end
 
@@ -40,13 +41,13 @@ class PlaylistsController < ApplicationController
   def follow
     @playlist = Playlist.find(params[:id])
     current_user.follow(@playlist)
-    redirect_to root_path flash[:notice] = "You are now following #{@playlist.name}."
+    redirect_to root_path, :notice => "You are now following #{@playlist.name}."
   end
 
   def unfollow
     @playlist = Playlist.find(params[:id])  
     current_user.stop_following(@playlist)
-    redirect_to root_path flash[:notice] = "You are no longer following #{@playlist.name}."
+    redirect_to root_path :notice => "You are no longer following #{@playlist.name}."
   end
   
   private
