@@ -17,20 +17,45 @@
 //= require_tree .
 
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  $('#spotify_search').on('input', function() {
-    var query = event.target.value;
+//   $('#spotify_search').on('input', function() {
+//     var query = event.target.value;
 
-    if (query) {
-      $.ajax($(this).data('search-uri') + "?q=" + encodeURIComponent(query)).done(function(data) {
-          $("#spotify_search_results").html(data);
-        }).fail(function() {
-          alert( "error" );
-        })
+//     if (query) {
+//       $.ajax($(this).data('search-uri') + "?q=" + encodeURIComponent(query)).done(function(data) {
+//           $("#spotify_search_results").html(data);
+//         }).fail(function() {
+//           alert( "error" );
+//         })
         // .always(function() {
         //   alert( "complete" );
         // });
-    };
-  });
+//     };
+//   });
+// });
+
+$(document).ready(function() {
+  (function() {
+    var timeout;
+    $('#spotify_search').on('input', function() {
+      var query = event.target.value;
+      var element = $(this);
+      if (query.length > 2) {
+        if (element.data('search') == query) return;
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          element.data('search', query);
+          var url = element.data('search-uri') + "?q=" + encodeURIComponent(query);
+          $.ajax(url)
+            .done(function(data) {
+              $("#spotify_search_results").html(data);
+            })
+            .fail(function(data) {
+              console.log("Spotify Error", data);
+            });
+        }, 400);
+      }
+    });
+  }());
 });
