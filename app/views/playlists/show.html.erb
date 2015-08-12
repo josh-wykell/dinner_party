@@ -30,11 +30,13 @@
             <tr>
               <td></td>
               <td></td>
+              <% if @playlist.user == current_user %>
               <td>
                 <%= link_to playlist_path(@playlist), method: :delete, data: { confirm: 'Are you sure?' } do %>
                   Delete This Playlist
                   <% end %>
               </td>
+              <% end %>
             </tr>
           </tfoot>
           <tbody>
